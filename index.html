@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play music</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h3>Bài hát hiện tại</h3>
+            <h2>Name song</h1>
+                <div class="disk">
+                    <img src="https://kenh14cdn.com/thumb_w/660/2018/6/26/a-15300321076161599704672.jpg" alt="" />
+                </div>
+                <div class="function flex-center">
+                    <div class="repeat">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                    </div>
+                    <div class="prev">
+                        <ion-icon name="play-back-outline"></ion-icon>
+                    </div>
+                    <div class="play flex-center">
+                        <ion-icon name="play-outline"></ion-icon>
+                    </div>
+                    <div class="next">
+                        <ion-icon name="play-forward-outline"></ion-icon>
+                    </div>
+                    <div class="random ">
+                        <ion-icon name="shuffle-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="time flex-center">
+                    <span id="start">00:00</span>
+                    <input type="range" id="progress" value="0" min="0" max="100" step="1" />
+                    <span id="end">00:00</span>
+                    <audio src="" id="audio"></audio>
+                </div>
+        </header>
+        <main>
+            <div class="wrapper"></div>
+        </main>
+    </div>
+</body>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="script.js"></script>
+
+</html>

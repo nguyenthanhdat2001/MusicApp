@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    min-width: 360px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    min-width: 360px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+header h2 {
+    color: crimson;
+}
+
+header .disk {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 15px auto;
+}
+
+header .function {
+    column-gap: 40px;
+    height: 50px;
+    margin: 10px 0;
+}
+
+header .function > div {
+    cursor: pointer !important;
+}
+
+header .function ion-icon {
+    font-size: 25px;
+}
+
+header .function .play {
+    width: 50px;
+    height: 50px;
+    background-color: crimson;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+header .function > .active {
+    color: crimson;
+}
+
+header .function .play ion-icon {
+    font-size: 30px;
+    color: #fff;
+}
+
+header .time {
+    column-gap: 10px;
+}
+
+header .time input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 10px;
+    background: #d3d3d3;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+
+header .time input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: crimson;
+    cursor: pointer;
+}
+
+main {
+    margin-top: 360px;
+    padding: 10px;
+    background-color: #ededed;
+}
+
+main .wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+main .wrapper .song {
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    height: 100px;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: all 0.1s;
+}
+
+main .wrapper .song .image-song{
+    width: 80px;
+    overflow: hidden;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+main .wrapper .song .option{
+    padding: 0 10px;
+}
+
+main .wrapper .song.active{
+    background-color: crimson;
+    color: #fff;
+}
+
+main .wrapper .song:hover {
+    background-color: crimson;
+    color: #fff;
+}
+
+.content,
+.orther {
+    padding: 0 10px;
+}
+
+.song .image-song {
+    width: 100px;
+}
+
+.content p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
