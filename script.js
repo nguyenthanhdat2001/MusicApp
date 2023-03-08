@@ -9,8 +9,10 @@
 // 9. Scroll active song into view
 // 10. Play song when click 
 
-var $ = document.querySelector.bind(document)
-var $$ = document.querySelectorAll.bind(document)
+const $ = document.querySelector.bind(document)
+const $$ = document.querySelectorAll.bind(document)
+
+const STORAGE_KEY = 'Player'
 
 let listSong = $('.wrapper')
 let header = $('header h2')
@@ -31,6 +33,11 @@ var app = {
     isPlaying: false,
     isRandom: false,
     isLoop: false,
+    config: JSON.parse(localStorage.getItem(STORAGE_KEY)) || {},
+    setConfig: function (key, value) {
+        this.config[key] = value
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.config))
+    },
     songs: [
         {
             id: 1,
@@ -185,8 +192,8 @@ var app = {
         //Random song
         randomBtn.onclick = function () {
             _this.isRandom = !_this.isRandom
+            _this.setConfig('isRandom', _this.isRandom)
             this.classList.toggle('active', _this.isRandom)
-            console.log(_this.isRandom)
         }
 
         //End song
@@ -201,21 +208,21 @@ var app = {
         //Loop song
         repeatBtn.onclick = function () {
             _this.isLoop = !_this.isLoop
+            _this.setConfig('isLoop', _this.isLoop)
             this.classList.toggle('active', _this.isLoop)
-            console.log(_this.isLoop)
         }
 
         //Active song when click
         listSong.onclick = function (e) {
             const songElement = e.target.closest('.song:not(.active)')
-            if (songElement || e.target.closest('.option')){
-                if (songElement){
+            if (songElement || e.target.closest('.option')) {
+                if (songElement) {
                     _this.currentIndex = Number(songElement.dataset.id)
                     _this.loadCurrentSong()
                     _this.renderSong()
                     audio.play()
                 }
-                if (e.target.closest('.option')){
+                if (e.target.closest('.option')) {
 
                 }
             }
@@ -258,20 +265,28 @@ var app = {
         console.log(newIndex)
         this.loadCurrentSong()
     },
-    scrollTop(){
+    scrollTop() {
         setTimeout(() => {
             $('.song.active').scrollIntoView({
-                behavior:'smooth',
-                block:'center'
+                behavior: 'smooth',
+                block: 'center'
             })
-        },300)
-    }
-    ,
+        }, 300)
+    },
+    loadConfig() {
+        this.isRandom = this.config.isRandom
+        this.isLoop = this.config.isLoop
+    },
     start() {
+        this.loadConfig()
         this.defineProperty()
         this.handleEvent()
         this.loadCurrentSong() //tai thong tin bai hat dau tien
         this.renderSong()
+
+        // load status function
+        randomBtn.classList.toggle('active', this.isRandom)
+        repeatBtn.classList.toggle('active', this.isLoop)
     }
 }
 
